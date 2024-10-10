@@ -412,7 +412,7 @@ jobs:
     outputs:
       handle: {% raw %}${{ steps.generate-secret.outputs.handle }}{% endraw %}
     steps:
-    - uses: some/secret-store@v1
+    - uses: some/secret-store@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:{% raw %}
         credentials: ${{ secrets.SECRET_STORE_CREDENTIALS }}
         instance: ${{ secrets.SECRET_STORE_INSTANCE }}{% endraw %}
@@ -428,7 +428,7 @@ jobs:
     runs-on: macos-latest
     needs: secret-generator
     steps:
-    - uses: some/secret-store@v1
+    - uses: some/secret-store@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:{% raw %}
         credentials: ${{ secrets.SECRET_STORE_CREDENTIALS }}
         instance: ${{ secrets.SECRET_STORE_INSTANCE }}{% endraw %}
@@ -452,7 +452,7 @@ jobs:
   secret-generator:
     runs-on: ubuntu-latest
     steps:
-    - uses: some/secret-store@v1
+    - uses: some/secret-store@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:{% raw %}
         credentials: ${{ secrets.SECRET_STORE_CREDENTIALS }}
         instance: ${{ secrets.SECRET_STORE_INSTANCE }}{% endraw %}
@@ -467,7 +467,7 @@ jobs:
     runs-on: macos-latest
     needs: secret-generator
     steps:
-    - uses: some/secret-store@v1
+    - uses: some/secret-store@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:{% raw %}
         credentials: ${{ secrets.SECRET_STORE_CREDENTIALS }}
         instance: ${{ secrets.SECRET_STORE_INSTANCE }}{% endraw %}
@@ -965,7 +965,7 @@ Prepends a directory to the system `PATH` variable and automatically makes it av
 This example demonstrates how to add the user `$HOME/.local/bin` directory to `PATH`:
 
 ```bash copy
-echo "$HOME/.local/bin" >> $GITHUB_PATH
+echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 ```
 
 {% endbash %}
@@ -975,7 +975,7 @@ echo "$HOME/.local/bin" >> $GITHUB_PATH
 This example demonstrates how to add the user `$env:HOMEPATH/.local/bin` directory to `PATH`:
 
 ```powershell copy
-"$env:HOMEPATH/.local/bin" | Out-File -FilePath $env:GITHUB_PATH -Append
+"$env:HOMEPATH/.local/bin" | Out-File -FilePath "$env:GITHUB_PATH" -Append
 ```
 
 {% endpowershell %}
